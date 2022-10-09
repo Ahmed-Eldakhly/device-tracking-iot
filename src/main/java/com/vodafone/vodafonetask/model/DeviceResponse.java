@@ -15,9 +15,9 @@ public class DeviceResponse {
     public DeviceResponse(Devices device){
         id = device.getId();
         System.out.println(id);
-        deviceStatus = getDeviceStatus();
+        deviceStatus = device.getDeviceStatus();
         System.out.println(deviceStatus);
-        deviceIdealTemperature = getDeviceIdealTemperature();
+        deviceIdealTemperature = device.getDeviceIdealTemperature();
         System.out.println(deviceIdealTemperature);
         sim_id = device.getSim().getId();
         System.out.println(sim_id);

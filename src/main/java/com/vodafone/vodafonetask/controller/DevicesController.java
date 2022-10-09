@@ -33,17 +33,18 @@ public class DevicesController {
 
     @GetMapping(path = "/getWaitingDevices")
     public Iterable<DeviceResponse> getWaitingDevices() {
-        return DeviceResponse.getResponseAsJSON(devicesService.getAllWaitingDevices());
+        return devicesService.getAllWaitingDevices();
     }
 
     @GetMapping(path = "/getAvailableDevicesforSell")
     public Iterable<DeviceResponse> getAvailableForSellDevices() {
-        return DeviceResponse.getResponseAsJSON(devicesService.getAllAvailableDevicesForSale());
+        return devicesService.getAllAvailableDevicesForSale();
     }
+
 
     @PatchMapping(path = "/update/{id}", consumes = "application/json", produces = "application/json")
     @ResponseStatus(value = HttpStatus.OK)
-    public void save(@RequestBody Map<String, Object> payload, @PathVariable Long id) {
+    public void updateDevices(@RequestBody Map<String, Object> payload, @PathVariable Long id) {
         devicesService.updateDevice(payload , id);
     }
 
