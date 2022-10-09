@@ -1,17 +1,19 @@
 package com.vodafone.vodafonetask.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "sim")
-@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="devices")
-public class Sim {
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="sim")
+public class Sim implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "simId")
+    @Column(name = "sim_id")
     private Long id;
 
     @OneToOne(mappedBy = "sim")
@@ -22,11 +24,12 @@ public class Sim {
     private SimStatus simStatus;
 
 
-    @Column(name = "operatorCode")
+    @Column(name = "operator_code")
     private int operatorCode;
 
     @Column(name = "country")
     private String country;
+
 
     public Long getId() {
         return id;
@@ -63,6 +66,7 @@ public class Sim {
     public String getCountry() {
         return country;
     }
+
 
     public void setCountry(String country) {
         this.country = country;

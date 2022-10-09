@@ -1,20 +1,25 @@
 package com.vodafone.vodafonetask.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
-
+import java.io.Serializable;
 
 
 @Entity
 @Table(name = "devices")
+@NamedQueries({
+        @NamedQuery(name = "Devices.updateSimSimStatusById", query = "update Devices d set d.sim.simStatus = ?1 where d.id = ?2")
+})
 @JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="devices")
 public class Devices {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "deviceId")
+    @Column(name = "device_id")
     private Long id;
 
     @Column(name = "status", nullable = false)
@@ -22,11 +27,12 @@ public class Devices {
     private DeviceStatus deviceStatus;
 
 
-    @Column(name = "idealTemperature")
+    @Column(name = "ideal_temperature")
     private int deviceIdealTemperature;
 
-    @OneToOne(cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "simId", referencedColumnName = "simId")
+
+    @OneToOne()
+    @JoinColumn(name = "sim_id", referencedColumnName = "sim_id")
     private Sim sim;
 
     public Long getId() {
@@ -57,11 +63,15 @@ public class Devices {
         this.deviceIdealTemperature = deviceIdealTemperature;
     }
 
-    public Sim getSimId() {
+    public Sim getSim() {
         return sim;
     }
 
-    public void setSimId(Sim sim) {
+    public void setSim(Sim sim) {
         this.sim = sim;
     }
+
+    // Method
+    // Creating toString
+
 }
