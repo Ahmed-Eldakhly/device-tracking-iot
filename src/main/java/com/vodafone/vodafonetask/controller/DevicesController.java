@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 @JsonIgnoreProperties
 @RestController
@@ -41,12 +43,8 @@ public class DevicesController {
 
     @PatchMapping(path = "/update/{id}", consumes = "application/json", produces = "application/json")
     @ResponseStatus(value = HttpStatus.OK)
-    public void save(@RequestParam("status") SimStatus status, @PathVariable Long id) {
-
-        System.out.println("update");
-        devicesService.updateDevice(status, id);
-//        devicesService.updateDevice(status, id);
-
+    public void save(@RequestBody Map<String, Object> payload, @PathVariable Long id) {
+        devicesService.updateDevice(payload , id);
     }
 
 }

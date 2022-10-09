@@ -41,4 +41,6 @@ public interface DevicesRepository extends JpaRepository<Devices, Long> {
 
     Devices updateSimSimStatusById(SimStatus status, Long id);
 
+
+
 }
