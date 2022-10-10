@@ -28,9 +28,6 @@ public class DevicesController {
     @Autowired
     private DevicesService devicesService;
 
-    @JsonProperty(value = "Devices" , required = true)
-
-
     @GetMapping(path = "/getWaitingDevices")
     public Iterable<DeviceResponse> getWaitingDevices() {
         return devicesService.getAllWaitingDevices();

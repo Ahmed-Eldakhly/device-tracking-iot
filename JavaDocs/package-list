@@ -1,0 +1,6 @@
+com.vodafone.vodafonetask
+com.vodafone.vodafonetask.controller
+com.vodafone.vodafonetask.model
+com.vodafone.vodafonetask.repository
+com.vodafone.vodafonetask.security
+com.vodafone.vodafonetask.service
