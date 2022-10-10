@@ -1,4 +1,4 @@
-<img src="ReadmeResources/forestForecast.jpg">
+<img src="ReadmeAssets/warehouse.png">
 
 # IoT Devices Warehouse
 
